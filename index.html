@@ -4,7 +4,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chitrang Potdar — Backend Engineer</title>
+  <title>Chitrang Potdar — Backend Engineer | Python, APIs, AWS</title>
+
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- SEO Meta -->
+  <meta name="description"
+    content="Backend Engineer based in Pune, India, specializing in Python. Building REST APIs, CI/CD pipelines, serverless AWS systems, and AI-powered backend workflows." />
+  <meta name="keywords"
+    content="Chitrang Potdar, Backend Engineer, Python Developer, FastAPI, Flask, REST API, AWS, Docker, CI/CD, Redis, PostgreSQL, Pune, India" />
+  <meta name="author" content="Chitrang Potdar" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dev-chitrang.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Chitrang Potdar — Backend Engineer | Python, APIs, AWS" />
+  <meta property="og:description"
+    content="Backend Engineer specializing in Python, REST APIs, and AI-powered backend systems on AWS." />
+  <meta property="og:url" content="https://dev-chitrang.github.io/" />
+  <meta property="og:image" content="https://dev-chitrang.github.io/images/og-preview.png" />
+  <meta property="og:site_name" content="Chitrang Potdar — Portfolio" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Chitrang Potdar — Backend Engineer Portfolio Preview" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chitrang Potdar — Backend Engineer" />
+  <meta name="twitter:description"
+    content="Backend Engineer specializing in Python, REST APIs, and AI-powered backend systems on AWS." />
+  <meta name="twitter:image" content="https://dev-chitrang.github.io/images/og-preview.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chitrang Potdar",
+    "jobTitle": "Backend Engineer",
+    "url": "https://dev-chitrang.github.io/",
+    "email": "potdarchitrang4@gmail.com",
+    "sameAs": [
+      "https://linkedin.com/in/chitrang-potdar",
+      "https://github.com/Dev-Chitrang"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pune",
+      "addressCountry": "IN"
+    },
+    "knowsAbout": ["Python", "REST APIs", "FastAPI", "Flask", "Docker", "AWS", "CI/CD", "Redis", "PostgreSQL", "AI Agents", "SQL"]
+  }
+  </script>
+
+  <!-- Google Analytics — replace G-XXXXXXXXXX with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HNPBMBNTWZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-HNPBMBNTWZ');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -54,8 +116,7 @@
     }
 
     html {
-      scroll-behavior: smooth !important;
-      scroll-padding-top: 80px;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -1289,7 +1350,6 @@
       font-size: 0.72rem;
       color: var(--accent);
       transition: gap 0.18s ease;
-      margin-right: 2.5rem;
     }
 
     .research-link:hover {
@@ -1608,6 +1668,11 @@
         grid-template-columns: 1fr;
       }
 
+      .tl-cards.open {
+        max-height: 4000px;
+      }
+
+      /* fix: enough room for 3 stacked cards */
       .timeline {
         padding-left: 1.5rem;
       }
@@ -1643,7 +1708,7 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo" onclick="scrollTo('#hero')">CP_</div>
+    <div class="nav-logo" onclick="smoothScrollTo('#hero')">CP_</div>
     <ul class="nav-links">
       <li><a href="#hero" data-section="hero">home</a></li>
       <li><a href="#about" data-section="about">about</a></li>
@@ -1687,7 +1752,8 @@
           </p>
 
           <div class="hero-cta">
-            <a href="resume/Chitrang_Potdar_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-resume">
+            <a href="resume/Chitrang_Potdar_Resume.pdf" target="_blank" rel="noopener noreferrer" class="download-btn"
+              style="background:transparent;color:var(--accent);border:1.5px solid var(--accent);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path
                   d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zM12 17a5 5 0 100-10 5 5 0 000 10zM12 14a2 2 0 100-4 2 2 0 000 4z" />
@@ -1786,7 +1852,7 @@
             functional.</p>
           <div class="about-stats">
             <div>
-              <div class="stat-num">~1</div>
+              <div class="stat-num">&sim;1</div>
               <div class="stat-label">Yr Experience</div>
             </div>
             <div>
@@ -2133,9 +2199,6 @@
           <div class="research-title">Corporate Credit Rating Analysis using AI &amp; Sentiment Analysis</div>
           <div class="research-meta">IJIRCCE · International Journal of Innovative Research in Computer and
             Communication Engineering</div>
-          <a href="https://www.ijircce.com/admin/main/storage/app/pdf/LZvBGcl6LMJGAixiFi9ntsF9iDW4cEdKAlISQzhy.pdf"
-            target="_blank" class="research-link">View Published Paper →</a>
-
           <a href="https://github.com/Dev-Chitrang/Final-year-project/tree/Backend" target="_blank"
             class="research-link">View Repository →</a>
         </div>
@@ -2156,14 +2219,11 @@
         <p class="contact-sub reveal">Open to Backend Engineer roles. If you're building something interesting in
           Python, APIs, or AI-powered backends — I'd love to hear about it.</p>
         <div class="contact-grid reveal-stagger">
-          <a href="/cdn-cgi/l/email-protection#6d0e0504191f0c030a1d0219090c1f542d0a000c0401430e0200"
-            class="contact-item">
+          <a href="mailto:potdarchitrang4@gmail.com" class="contact-item">
             <div class="contact-icon">✉️</div>
             <div class="contact-text">
               <div class="contact-type">Email</div>
-              <div class="contact-val"><span class="__cf_email__"
-                  data-cfemail="204348495452414e47504f544441521960474d41494c0e434f4d">[email&#160;protected]</span>
-              </div>
+              <div class="contact-val">potdarchitrang4@gmail.com</div>
             </div>
           </a>
           <a href="tel:+917498307771" class="contact-item">
@@ -2211,7 +2271,6 @@
   <!-- FOOTER -->
   <footer class="site-footer">Built with ♥ by <span>Chitrang Potdar</span> · Hosted on GitHub Pages</footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
     // Mobile nav
     function toggleMobileNav() {
@@ -2261,6 +2320,18 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
+    // Smooth scroll for all nav links (desktop + mobile drawer)
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - navH;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
     // Timeline expand
     function toggleTl(header) {
       const item = header.closest('.timeline-item');
@@ -2302,22 +2373,12 @@
       revealObserver.observe(el);
     });
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault(); // Stop the instant jump
-
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
+    function smoothScrollTo(href) {
+      const target = document.querySelector(href);
+      if (!target) return;
+      const top = target.getBoundingClientRect().top + window.scrollY - navH;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
   </script>
 </body>
 
