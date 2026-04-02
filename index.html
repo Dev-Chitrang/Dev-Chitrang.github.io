@@ -1747,8 +1747,7 @@
           <p class="hero-eyebrow">// backend engineer · pune, india</p>
           <h1 class="hero-name">Chitrang<br /><span>Potdar</span></h1>
           <p class="hero-tagline">
-            Backend Engineer specializing in Python — building backend systems (Flask/FastAPI), APIs, and AI-powered workflows with
-            real-world deployment experience.
+            Backend Engineer specializing in Python — building backend systems, APIs, and AI-powered workflows deployed in production environments.
           </p>
 
           <div class="hero-cta">
@@ -1841,19 +1840,17 @@
           <div class="about-tag">Open to work</div>
         </div>
         <div class="about-text">
-          <p>I'm a <strong>Backend Engineer</strong> based in Pune, India, specializing in Python. I design and develop
-            backend systems(Flask/FastAPI), APIs, and data-driven applications with a strong focus on reliability, testing, and
-            deployment.</p>
-          <p>Beyond backend systems, I work with AI-integrated workflows, data pipelines, and cloud services — building
-            backend processes that transform raw data into structured outputs and expose them through APIs.</p>
-          <p>I hold a <strong>B.E. in Computer Engineering</strong> from Savitribai Phule Pune University (CGPA: 8.56)
-            and have a published research paper on AI-driven corporate credit rating analysis.</p>
-          <p>I focus on building backend systems that are reliable, testable, and production-ready — not just
-            functional.</p>
+          <p>I'm a <strong>Backend Engineer</strong> based in Pune, India, specializing in Python. I build production backend systems, APIs, and data-driven applications with a strong focus on reliability, testing, and deployment.</p>
+
+<p>I work on AI-integrated backend workflows and data pipelines — building systems that process raw data, apply structured logic or models, and expose results through APIs.</p>
+
+<p>I hold a <strong>B.E. in Computer Engineering</strong> from Savitribai Phule Pune University (CGPA: 8.56) and have a published research paper on AI-driven corporate credit rating analysis.</p>
+
+<p>I focus on building systems that are reliable, testable, and maintainable — designed to perform consistently under real usage conditions.</p>
           <div class="about-stats">
             <div>
               <div class="stat-num">&sim;1</div>
-              <div class="stat-label">Yr Experience</div>
+              <div class="stat-label">Year Experience</div>
             </div>
             <div>
               <div class="stat-num">80%+</div>
@@ -1861,7 +1858,7 @@
             </div>
             <div>
               <div class="stat-num">3</div>
-              <div class="stat-label">Backend Systems Built</div>
+              <div class="stat-label">Production Systems Built</div>
             </div>
           </div>
           <div class="focus-areas">
@@ -1993,18 +1990,17 @@
             <div class="domain-card">
               <div class="domain-card-tag">🏦 Backend · Investment Ops</div>
               <div class="domain-card-title">Investment Operations Platform</div>
-              <div class="domain-card-desc">Backend systems, REST APIs, CI/CD pipelines, Redis optimization, and testing
-                infrastructure. Production backend application with APIs, CI/CD pipelines, Redis-based optimizations,
-                and testing infrastructure. Took ownership of backend development including features, testing,
-                deployments, and production releases.</div>
+              <div class="domain-card-desc">Production-grade investment operations platform handling portfolio workflows, financial data processing, and client reporting - including multi-tenant data isolation across users and organizations. Owned end-to-end backend development including architecture decisions, API design, testing, CI/CD and deployments.</div>
               <div class="contrib-label">Key Contributions</div>
               <ul class="contrib-list">
-                <li>Built production <span class="kw">REST APIs</span> powering user management, financial transactions,
-                  and reporting — with structured validation and error handling</li>
+                <li>Designed and built production <span class="kw">REST APIs</span> for portfolio review workflows, rejected order tracking, and financial calculators - integrated JIRA API to auto-create and track operational issues from portfolio analysis.</li>
                 <li>Owned end-to-end <span class="kw">CI/CD pipelines</span> via GitHub Actions; containerized all
                   services with <span class="kw">Docker</span></li>
+                <li>Implemented <span class="kw">multi-tenant architecture </span> with strict data isolation at query level across the database.</li>
                 <li>Engineered <span class="kw">Redis</span>-based session management, eliminating redundant DB reads on
                   auth endpoints</li>
+                <li>Automated meeting summary <span class="metric">MoM</span> generation and delivery via <span class="kw">WhatsApp</span> and <span class="kw">Email</span> replacing manual reporting workflows.</li>
+                <li>Built <span class="kw">file attachment workflows </span> for financial documents and reports on S3 bucket.</li>
                 <li>Achieved <span class="metric">80%+</span> unit test coverage with <span class="kw">Pytest</span>
                   across core API modules</li>
                 <li>Automated client-facing browser workflows using <span class="kw">Playwright</span>, saving <span
@@ -2013,30 +2009,16 @@
               <div class="domain-card-stack"><span class="stack-chip">Flask</span><span
                   class="stack-chip">PostgreSQL</span><span class="stack-chip">Redis</span><span
                   class="stack-chip">Docker</span><span class="stack-chip">GitHub Actions</span><span
-                  class="stack-chip">Pytest</span><span class="stack-chip">Playwright</span></div>
-            </div>
-            <div class="domain-card">
-              <div class="domain-card-tag">☁️ Serverless · Cloud</div>
-              <div class="domain-card-title">Serverless Data Capture Pipeline</div>
-              <div class="domain-card-desc">Designed a lightweight serverless pipeline routing frontend form submissions
-                to Google Sheets.</div>
-              <div class="contrib-label">Key Contributions</div>
-              <ul class="contrib-list">
-                <li>Architected event-driven flow: <span class="kw">API Gateway</span> → <span class="kw">AWS
-                    Lambda</span> → <span class="kw">Google Sheets API</span></li>
-                <li>Added Live Google Sheet data ingestion along with database </li>
-                <li>Deployed and tested end-to-end in production with zero downtime</li>
-              </ul>
-              <div class="domain-card-stack"><span class="stack-chip">AWS Lambda</span><span class="stack-chip">API
-                  Gateway</span><span class="stack-chip">Google Sheets API</span></div>
+                  class="stack-chip">Pytest</span><span class="stack-chip">Playwright</span><span class="stack-chip">Amazon S3</span></div>
+                  
             </div>
             <div class="domain-card">
               <div class="domain-card-tag">🤖 AI · Serverless</div>
               <div class="domain-card-title">AI Meeting Intelligence Pipeline</div>
-              <div class="domain-card-desc">End-to-end serverless pipeline converting meeting audio into structured
-                insights using LLMs — from raw audio to actionable output.</div>
+              <div class="domain-card-desc">Async serverless pipeline converting meeting audio into structured insights - designed around API Gateway's 29 second timeout constraint using an async architecture.</div>
               <div class="contrib-label">Key Contributions</div>
               <ul class="contrib-list">
+                <li>Designed async job-based workflow to handle API Gateway timeout limits - request returns an immediate status response while processing continues asynchronously, and client polls for completion.</li>
                 <li>Architected multi-stage pipeline: <span class="kw">S3</span> → <span class="kw">AWS
                     Transcribe</span> → <span class="kw">Claude API</span> → structured JSON via <span class="kw">API
                     Gateway</span></li>
@@ -2047,6 +2029,13 @@
               <div class="domain-card-stack"><span class="stack-chip">AWS Lambda</span><span class="stack-chip">AWS
                   S3</span><span class="stack-chip">AWS Transcribe</span><span class="stack-chip">Claude API</span><span
                   class="stack-chip">API Gateway</span></div>
+            </div>
+            <div class="domain-card">
+              <div class="domain-card-tag">☁️ Lightweight Serverless Integration (Google Sheets)</div>
+              <div class="domain-card-title">Form data to Google Sheets Integration</div>
+              <div class="domain-card-desc">Implemented a lightweight serverless integration to route frontend form data into Google Sheets for internal tracking.</div>
+              <div class="domain-card-stack"><span class="stack-chip">AWS Lambda</span><span class="stack-chip">API
+                  Gateway</span><span class="stack-chip">Google Sheets API</span></div>
             </div>
           </div>
         </div>
