@@ -1005,6 +1005,32 @@
       vertical-align: middle;
     }
 
+    .ci-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: #3fb950;
+      letter-spacing: 0.06em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .ci-badge:hover {
+      text-decoration: underline;
+    }
+
+    .ci-badge-dot {
+      width: 7px;
+      height: 7px;
+      background: #3fb950;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
     .tl-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -2400,20 +2426,24 @@
 
         <!-- SOLID-Agent-Harness — NEW FIRST CARD -->
         <div class="project-card" onclick="window.open('https://github.com/Dev-Chitrang/SOLID-Agent-Harness','_blank')">
-          <div class="project-title">SOLID-Agent-Harness — Multi-Agent Code Analysis</div>
-          <div class="project-date">June 2026</div>
-          <div class="project-desc">CLI tool for automated repository analysis using LangGraph supervisor pattern with
-            parallel specialized agents.</div>
+          <div class="project-title">SOLID-Agent-Harness — Multi-Agent Code Analysis CLI</div>
+          <div class="project-date">June 2026<a href="https://github.com/Dev-Chitrang/SOLID-Agent-Harness/actions/workflows/ci.yml" target="_blank" class="ci-badge" onclick="event.stopPropagation()"><span class="ci-badge-dot"></span>CI passing</a></div>
+          <div class="project-desc">Registry-driven CLI tool running 6 LangGraph workflows (SOLID audit, bug sweep, docs,
+            README generation, review, explain) individually or as 5 composite pipelines that fan out the individual
+            graphs in parallel with a barrier-joined summary node.</div>
           <ul class="proj-features">
-            <li><span class="kw">LangGraph supervisor</span> dispatches to 4 parallel agents: SOLID Auditor, Bug Hunter,
-              Documenter, README Generator</li>
-            <li><span class="kw">Report Writer node</span> compiles all agent outputs into structured Markdown reports
-            </li>
-            <li><span class="kw">LangSmith</span> integration for optional observability</li>
+            <li>Designed an <span class="kw">Agent → Critic → conditional-retry loop</span> per graph (score-gated, max 3
+              iterations) using LangGraph's StateGraph and addConditionalEdges — replaced earlier thin-wrapper graphs with
+              patterns that actually justify a graph framework over plain async/await</li>
+            <li>Built a <span class="kw">provider abstraction</span> (OpenAI, Anthropic, Gemini, NVIDIA) swappable without
+              touching graph code; document-aware nodes detect existing reports and switch between generate/update mode;
+              diff-aware writes skip unchanged output</li>
+            <li>Diagnosed and fixed a <span class="kw">Node.js 18 incompatibility</span> (transitive dependency using an
+              ES2024 regex flag) by isolating the failure across CI matrix versions, traced to ora/inquirer majors,
+              resolved by rebaselining to Node 20+</li>
           </ul>
           <div class="project-stack"><span class="stack-chip">LangChain</span><span
-              class="stack-chip">LangGraph</span><span class="stack-chip">Python</span><span
-              class="stack-chip">LangSmith</span></div>
+              class="stack-chip">LangGraph</span><span class="stack-chip">Node.js</span></div>
           <a href="https://github.com/Dev-Chitrang/SOLID-Agent-Harness" target="_blank" class="project-github"
             onclick="event.stopPropagation()">
             <svg viewBox="0 0 24 24" fill="currentColor">
