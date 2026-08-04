@@ -2182,13 +2182,9 @@
         </div>
         <div class="skill-group">
           <div class="skill-group-label">ML/Data Skills <span
-              style="margin-left:auto;font-size:0.6rem;color:var(--muted)">9 skills</span></div>
+              style="margin-left:auto;font-size:0.6rem;color:var(--muted)">5 skills</span></div>
           <div class="skill-pills">
-            <span class="pill">MLflow</span>
-            <span class="pill">ZenML</span>
             <span class="pill">Scikit-learn</span>
-            <span class="pill">XGBoost</span>
-            <span class="pill">NeuralProphet</span>
             <span class="pill">Pandas</span>
             <span class="pill">NumPy</span>
             <span class="pill">Matplotlib</span>
@@ -2252,43 +2248,41 @@
                 API design, testing, CI/CD and deployments.</div>
               <div class="contrib-label">Key Contributions</div>
               <ul class="contrib-list">
-                <li>Designed and built production <span class="kw">REST APIs</span> for portfolio review workflows,
-                  rejected order tracking, and financial calculators - integrated JIRA API to auto-create and track
-                  operational issues from portfolio analysis.</li>
-                <li>Owned end-to-end <span class="kw">CI/CD pipelines</span> via GitHub Actions; containerized all
-                  services with <span class="kw">Docker</span></li>
-                <li>Implemented <span class="kw">multi-tenant architecture </span> with strict data isolation at query
-                  level across the database.</li>
-                <li>Engineered <span class="kw">Redis</span>-based session management, eliminating redundant DB reads on
-                  auth endpoints</li>
-                <li>Automated meeting summary <span class="metric">MoM</span> generation and delivery via <span
-                    class="kw">WhatsApp</span> and <span class="kw">Email</span> replacing manual reporting workflows.
+                <li>Built a <span class="kw">multi-tenant backend</span> with query-level data isolation across
+                  users, portfolios, and organizations — ensuring each tenant only ever accesses their own data within
+                  a shared PostgreSQL schema.</li>
+                <li>Developed <span class="kw">REST APIs</span> for portfolio review, rejected order tracking, and
+                  financial calculators; integrated the <span class="kw">Jira API</span> to automatically create
+                  issues from application events, eliminating a manual reporting step.</li>
+                <li>Reduced redundant database round-trips by introducing <span class="kw">Redis-based session
+                    caching</span> for frequently accessed user context; maintained <span
+                    class="metric">80%+</span> unit test coverage with <span class="kw">Pytest</span>.</li>
+                <li>Automated NSE rejected order processing using Python API integrations and end-to-end client
+                  workflows using <span class="kw">Playwright</span>, reducing manual operational effort by
+                  approximately <span class="metric">2–3 hours/week</span>.</li>
+                <li>Configured <span class="kw">Promtail</span> to ship application logs into <span
+                    class="kw">Loki</span> and built <span class="kw">Grafana</span> dashboards to surface service
+                  health and error trends — giving the team structured visibility into backend behaviour for the
+                  first time.</li>
+                <li>Built a domain-specific <span class="kw">MCP server</span> to expose investment platform data to
+                  LLM clients: annotated each tool and function signature with investment-domain terminology (e.g.
+                  portfolio review, order status) so the model correctly resolves business concepts to the underlying
+                  database operations without requiring raw schema knowledge.</li>
+                <li>Implemented async background email delivery using <span class="kw">Redis</span> and <span
+                    class="kw">Celery</span>: on task creation, a job is enqueued in Redis, a Celery worker picks it
+                  up and sends the email, and the UI receives a failure notification if delivery does not succeed.
                 </li>
-                <li>Built <span class="kw">file attachment workflows </span> for financial documents and reports on S3
-                  bucket.</li>
-                <li>Achieved <span class="metric">80%+</span> unit test coverage with <span class="kw">Pytest</span>
-                  across core API modules</li>
-                <li>Automated client-facing browser workflows using <span class="kw">Playwright</span>, saving <span
-                    class="metric">~2–3 hours/week</span> of manual effort</li>
-                <li>Built domain-specific <span class="kw">MCP server</span> exposing investment platform data to LLM
-                  clients — annotated tools with investment-domain terminology (portfolio review, order status) so model
-                  resolves business concepts to DB operations without raw schema knowledge. Stack: <span
-                    class="metric">MCP</span></li>
-                <li>Implemented <span class="kw">async email delivery</span> via Redis + Celery: task creation enqueues
-                  job → Celery worker sends email → UI notified on failure. Stack: <span class="metric">Redis,
-                    Celery</span></li>
-                <li>Configured <span class="kw">Promtail → Loki</span> log shipping + built <span
-                    class="kw">Grafana</span> dashboards for service health and error trends. Stack: <span
-                    class="metric">Grafana, Loki, Promtail</span></li>
+                <li>Added <span class="kw">Web Push notifications</span> (VAPID-based) for single-user real-time
+                  alerts, extending the notification system beyond email.</li>
               </ul>
               <div class="domain-card-stack"><span class="stack-chip">Flask</span><span
                   class="stack-chip">PostgreSQL</span><span class="stack-chip">Redis</span><span
                   class="stack-chip">Docker</span><span class="stack-chip">GitHub Actions</span><span
-                  class="stack-chip">Pytest</span><span class="stack-chip">Playwright</span><span
-                  class="stack-chip">Amazon S3</span><span class="stack-chip">Grafana</span><span
+                  class="stack-chip">AWS EC2</span><span class="stack-chip">Grafana</span><span
                   class="stack-chip">Loki</span><span class="stack-chip">Promtail</span><span
-                  class="stack-chip">Celery</span><span class="stack-chip">AWS EC2</span><span
-                  class="stack-chip">MCP</span></div>
+                  class="stack-chip">Pytest</span><span class="stack-chip">Playwright</span><span
+                  class="stack-chip">Celery</span><span class="stack-chip">MCP</span><span
+                  class="stack-chip">Web Push (VAPID)</span></div>
 
             </div>
             <div class="domain-card">
@@ -2305,15 +2299,11 @@
                 - designed around API Gateway's 29 second timeout constraint using an async architecture.</div>
               <div class="contrib-label">Key Contributions</div>
               <ul class="contrib-list">
-                <li>Designed async job-based workflow to handle API Gateway timeout limits - request returns an
-                  immediate status response while processing continues asynchronously, and client polls for completion.
-                </li>
-                <li>Architected multi-stage pipeline: <span class="kw">S3</span> → <span class="kw">AWS
-                    Transcribe</span> → <span class="kw">Claude API</span> → structured JSON via <span class="kw">API
-                    Gateway</span></li>
-                <li>Implemented LLM-based processing layer generating structured outputs (summaries, scoring, and task
-                  extraction)</li>
-                <li>Delivered structured JSON output directly to the UI — no manual processing needed</li>
+                <li>Designed an async serverless pipeline to work within <span class="kw">API Gateway's 29-second
+                    timeout</span>: audio and agenda files are uploaded to S3, transcribed via <span class="kw">AWS
+                    Transcribe</span>, then passed to the <span class="kw">Claude API</span>.</li>
+                <li>Produced structured output — summary, agenda scoring, and action items — delivered directly to
+                  the UI with no manual processing needed.</li>
               </ul>
               <div class="domain-card-stack"><span class="stack-chip">AWS Lambda</span><span class="stack-chip">AWS
                   S3</span><span class="stack-chip">AWS Transcribe</span><span class="stack-chip">Claude API</span><span
@@ -2341,6 +2331,55 @@
               <div class="domain-card-stack"><span class="stack-chip">FastAPI</span><span class="stack-chip">Google
                   Cloud STT</span><span class="stack-chip">Whisper</span><span class="stack-chip">TTS</span><span
                   class="stack-chip">Claude API</span><span class="stack-chip">LlamaIndex</span></div>
+            </div>
+            <div class="domain-card">
+              <div style="display:flex;gap:6px;margin-bottom:0.8rem;align-items:center">
+                <span style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></span>
+                <span style="width:10px;height:10px;border-radius:50%;background:#ffbd2e"></span>
+                <span style="width:10px;height:10px;border-radius:50%;background:#28c840"></span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);margin-left:0.5rem">🎓
+                  Client Project · LMS/CMS</span>
+              </div>
+              <div class="domain-card-tag">🎓 Client Project · LMS/CMS</div>
+              <div class="domain-card-title">Jaro Education – LMS &amp; CMS Platform</div>
+              <div class="domain-card-desc">Modular monolithic backend for an LMS and CMS platform built for an
+                educational client, as sole backend/database engineer in a 4-person team (2 UI developers, 1
+                tester). Jul 2026.</div>
+              <div class="contrib-label">Key Contributions</div>
+              <ul class="contrib-list">
+                <li>Designed and built the <span class="kw">modular monolithic backend</span> end-to-end as sole
+                  backend/database engineer.</li>
+                <li>Implemented authentication with email verification via <span class="kw">SendGrid</span>.</li>
+                <li>Built course creation and student management modules for platform administrators.</li>
+                <li>Integrated <span class="kw">Vimeo</span> for course video upload and streaming, and <span
+                    class="kw">AWS S3</span> for certificate storage and retrieval through backend APIs.</li>
+                <li>Developed backend APIs supporting the student-facing LMS for course access and certificate
+                  retrieval.</li>
+              </ul>
+              <div class="domain-card-stack"><span class="stack-chip">FastAPI</span><span
+                  class="stack-chip">PostgreSQL</span><span class="stack-chip">SendGrid</span><span
+                  class="stack-chip">Vimeo</span><span class="stack-chip">AWS S3</span><span
+                  class="stack-chip">Modular Monolith</span></div>
+            </div>
+            <div class="domain-card">
+              <div style="display:flex;gap:6px;margin-bottom:0.8rem;align-items:center">
+                <span style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></span>
+                <span style="width:10px;height:10px;border-radius:50%;background:#ffbd2e"></span>
+                <span style="width:10px;height:10px;border-radius:50%;background:#28c840"></span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);margin-left:0.5rem">🏛️
+                  Client Project · CMS</span>
+              </div>
+              <div class="domain-card-tag">🏛️ Client Project · CMS</div>
+              <div class="domain-card-title">IISc Bangalore – Conference Management CMS</div>
+              <div class="domain-card-desc">Conference management system built for IISc Bangalore, supporting
+                publishing, registration, and approval workflows. Jul 2026.</div>
+              <div class="contrib-label">Key Contributions</div>
+              <ul class="contrib-list">
+                <li>Built a conference management system supporting <span class="kw">conference publishing</span>,
+                  participant registration, admin approval/rejection workflows, and attendance tracking.</li>
+              </ul>
+              <div class="domain-card-stack"><span class="stack-chip">FastAPI</span><span
+                  class="stack-chip">PostgreSQL</span></div>
             </div>
           </div>
         </div>
@@ -2454,57 +2493,47 @@
           </a>
         </div>
 
-        <div class="project-card"
-          onclick="window.open('https://github.com/Dev-Chitrang/TaskHub-Full-Stack-Project','_blank')">
-          <div class="project-title">TaskHub — Project Management Platform</div>
-          <div class="project-date">Aug – Sep 2025</div>
-          <div class="project-desc">Backend system supporting authentication, RBAC, and task workflows for a project
-            management application.</div>
+        <div class="project-card">
+          <div class="project-title">Unified Workspace — Full-Stack Productivity Suite</div>
+          <div class="project-date">unified-workspace.duckdns.org<a href="https://github.com/Dev-Chitrang/Productivity-SaaS-Ful-Stack-App/actions/workflows/ci.yml" target="_blank" class="ci-badge" onclick="event.stopPropagation()"><span class="ci-badge-dot"></span>CI passing</a></div>
+          <div class="project-desc">Self-hosted productivity platform unifying task management, notes, calendar
+            scheduling, WebRTC audio meetings, collaborative whiteboarding, and AI meeting analysis into one
+            application.</div>
           <ul class="proj-features">
-            <li><span class="kw">JWT auth</span> with email verification, 2FA (TOTP), and password recovery</li>
-            <li><span class="kw">REST APIs</span> for task CRUD, workspace management, and file attachments</li>
-            <li>Containerized with <span class="kw">Docker</span>; CI/CD via <span class="kw">GitHub Actions</span>;
-              unit tests with <span class="kw">Pytest</span></li>
+            <li>Layered <span class="kw">Repository → Service → Controller</span> architecture with dependency
+              injection throughout the FastAPI backend.</li>
+            <li><span class="kw">Redis-backed meeting engine</span> with session-scoped lifecycle management and
+              WebSocket signaling for real-time audio meetings.</li>
+            <li>AI-powered meeting analysis via <span class="kw">NVIDIA NIM (Llama 3.3 70B)</span> generating
+              summaries, agenda coverage, and actionable task suggestions.</li>
+            <li><span class="kw">JWT auth</span> with Redis-backed token revocation, OTP-based 2FA, and Google
+              OAuth sign-in.</li>
+            <li>Maintained <span class="metric">100+</span> test files with <span class="metric">2,100+</span> test
+              cases using pytest-asyncio; deployed as a 6-service Dockerized stack.</li>
           </ul>
-          <div class="project-stack"><span class="stack-chip">FastAPI</span><span
-              class="stack-chip">PostgreSQL</span><span class="stack-chip">Docker</span><span class="stack-chip">GitHub
-              Actions</span>
-            <span class="stack-chip">Pytest</span>
+          <div class="project-stack"><span class="stack-chip">FastAPI</span><span class="stack-chip">React</span><span
+              class="stack-chip">PostgreSQL</span><span class="stack-chip">Redis</span><span
+              class="stack-chip">Celery</span><span class="stack-chip">Docker</span></div>
+          <div style="display:flex;gap:0.6rem;margin-top:0.6rem">
+            <a href="https://unified-workspace.duckdns.org/" target="_blank" rel="noopener noreferrer"
+              class="project-github">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+              <span>Live URL</span>
+            </a>
+            <a href="https://github.com/Dev-Chitrang/Productivity-SaaS-Ful-Stack-App" target="_blank"
+              rel="noopener noreferrer" class="project-github">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12" />
+              </svg>
+              <span>GitHub</span>
+            </a>
           </div>
-          <a href="https://github.com/Dev-Chitrang/TaskHub-Full-Stack-Project" target="_blank" class="project-github"
-            onclick="event.stopPropagation()">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12" />
-            </svg>
-            <span>github.com/Dev-Chitrang/TaskHub-Full-Stack-Project</span>
-          </a>
-        </div>
-
-        <div class="project-card"
-          onclick="window.open('https://github.com/Dev-Chitrang/data-warehouse-to-mlops','_blank')">
-          <div class="project-title">Retail DataOps &amp; MLOps Platform</div>
-          <div class="project-date">Mar – Jul 2025</div>
-          <div class="project-desc">Backend system with ETL pipelines feeding a structured SQL Server warehouse and ML
-            outputs exposed via FastAPI APIs.</div>
-          <ul class="proj-features">
-            <li><span class="kw">ETL pipelines</span> structured into Bronze/Silver/Gold layers in MS SQL Server</li>
-            <li><span class="kw">FastAPI</span> layer exposing ML predictions as REST endpoints for downstream
-              consumption</li>
-            <li>Tracked with <span class="kw">MLflow</span>; orchestrated via <span class="kw">ZenML</span>;
-              containerized with <span class="kw">Docker</span></li>
-          </ul>
-          <div class="project-stack"><span class="stack-chip">FastAPI</span><span class="stack-chip">MSSQL</span><span
-              class="stack-chip">ZenML</span><span class="stack-chip">MLflow</span><span
-              class="stack-chip">Docker</span></div>
-          <a href="https://github.com/Dev-Chitrang/data-warehouse-to-mlops" target="_blank" class="project-github"
-            onclick="event.stopPropagation()">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12" />
-            </svg>
-            <span>github.com/Dev-Chitrang/data-warehouse-to-mlops</span>
-          </a>
         </div>
 
       </div>
