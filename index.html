@@ -1043,7 +1043,6 @@
     }
 
     .tl-cards.open {
-      max-height: 1400px;
       opacity: 1;
       margin-top: 1.2rem;
     }
@@ -1899,10 +1898,6 @@
         grid-template-columns: 1fr;
       }
 
-      .tl-cards.open {
-        max-height: 4000px;
-      }
-
       /* fix: enough room for 3 stacked cards */
       .timeline {
         padding-left: 1.5rem;
@@ -2219,7 +2214,7 @@
           <div class="tl-header" onclick="toggleTl(this)">
             <div>
               <div class="tl-title-row">
-                <div class="tl-role">Backend & Engineer <span class="current-badge">Current</span></div>
+                <div class="tl-role">Backend & AI Engineer <span class="current-badge">Current</span></div>
                 <div class="tl-caret" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                     stroke-linejoin="round">
@@ -2338,17 +2333,16 @@
                 <span style="width:10px;height:10px;border-radius:50%;background:#ffbd2e"></span>
                 <span style="width:10px;height:10px;border-radius:50%;background:#28c840"></span>
                 <span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);margin-left:0.5rem">🎓
-                  Client Project · LMS/CMS</span>
+                  Backend · LMS/CMS</span>
               </div>
-              <div class="domain-card-tag">🎓 Client Project · LMS/CMS</div>
+              <div class="domain-card-tag">🎓 Backend · LMS/CMS</div>
               <div class="domain-card-title">Jaro Education – LMS &amp; CMS Platform</div>
-              <div class="domain-card-desc">Modular monolithic backend for an LMS and CMS platform built for an
-                educational client, as sole backend/database engineer in a 4-person team (2 UI developers, 1
-                tester). Jul 2026.</div>
+              <div class="domain-card-desc">Modular monolithic backend for an LMS and CMS platform, built end-to-end
+                as the sole backend/database engineer.</div>
               <div class="contrib-label">Key Contributions</div>
               <ul class="contrib-list">
-                <li>Designed and built the <span class="kw">modular monolithic backend</span> end-to-end as sole
-                  backend/database engineer.</li>
+                <li>Designed and built the <span class="kw">modular monolithic backend</span> for the LMS and CMS
+                  platform end-to-end.</li>
                 <li>Implemented authentication with email verification via <span class="kw">SendGrid</span>.</li>
                 <li>Built course creation and student management modules for platform administrators.</li>
                 <li>Integrated <span class="kw">Vimeo</span> for course video upload and streaming, and <span
@@ -2367,12 +2361,12 @@
                 <span style="width:10px;height:10px;border-radius:50%;background:#ffbd2e"></span>
                 <span style="width:10px;height:10px;border-radius:50%;background:#28c840"></span>
                 <span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);margin-left:0.5rem">🏛️
-                  Client Project · CMS</span>
+                  Backend · CMS</span>
               </div>
-              <div class="domain-card-tag">🏛️ Client Project · CMS</div>
+              <div class="domain-card-tag">🏛️ Backend · CMS</div>
               <div class="domain-card-title">IISc Bangalore – Conference Management CMS</div>
-              <div class="domain-card-desc">Conference management system built for IISc Bangalore, supporting
-                publishing, registration, and approval workflows. Jul 2026.</div>
+              <div class="domain-card-desc">Conference management system supporting publishing, registration, and
+                approval workflows.</div>
               <div class="contrib-label">Key Contributions</div>
               <ul class="contrib-list">
                 <li>Built a conference management system supporting <span class="kw">conference publishing</span>,
@@ -2660,7 +2654,7 @@
   <footer class="site-footer">
     Built with ♥ by <span>Chitrang Potdar</span> · Hosted on GitHub Pages
     <div style="margin-top:0.5rem;font-size:0.62rem">
-      <span style="color:var(--accent)">●</span> Available for Backend & A Engineer roles · Pune, India
+      <span style="color:var(--accent)">●</span> Available for Backend & AI Engineer roles · Pune, India
     </div>
   </footer>
 
@@ -2725,20 +2719,41 @@
       });
     });
 
-    // Timeline expand
+    // Timeline expand — height computed dynamically so long cards never get clipped
+    function setCardsHeight(cards) {
+      cards.style.maxHeight = cards.scrollHeight + 'px';
+    }
+
     function toggleTl(header) {
       const item = header.closest('.timeline-item');
       const cards = item.querySelector('.tl-cards');
       const isOpen = item.classList.contains('open');
+
       document.querySelectorAll('.timeline-item.open').forEach(i => {
         if (i !== item) {
           i.classList.remove('open');
-          i.querySelector('.tl-cards').classList.remove('open');
+          const c = i.querySelector('.tl-cards');
+          c.classList.remove('open');
+          c.style.maxHeight = '0px';
         }
       });
+
       item.classList.toggle('open', !isOpen);
       cards.classList.toggle('open', !isOpen);
+
+      if (!isOpen) {
+        // opening — measure real content height instead of a hardcoded cap
+        setCardsHeight(cards);
+      } else {
+        cards.style.maxHeight = '0px';
+      }
     }
+
+    // Recompute open card height on resize/orientation change so reflowed
+    // text (e.g. rotating a phone) never gets clipped either.
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.timeline-item.open .tl-cards').forEach(setCardsHeight);
+    });
 
     // Coin flip
     function flipCoin(wrap) {
